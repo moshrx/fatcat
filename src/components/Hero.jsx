@@ -1,5 +1,3 @@
-import CatLogo from './CatLogo'
-
 export default function Hero() {
   return (
     <section id="home" className="relative min-h-[100svh] bg-linen-100 flex flex-col justify-center overflow-hidden">
@@ -17,8 +15,7 @@ export default function Hero() {
           {/* Left — text */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <CatLogo className="w-20 sm:w-24" />
-              <div className="h-px flex-1 bg-linen-300 max-w-[80px]" />
+              <div className="h-px w-10 bg-linen-400" />
               <span className="font-hand text-orange text-base">Charlottetown, PEI</span>
             </div>
 
