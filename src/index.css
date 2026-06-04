@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-espresso-900 text-cream-100 font-body antialiased;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+
+  ::selection { background: rgba(244,160,48,0.35); color: #fff; }
+}
+
+@layer components {
+  /* ── Typography ─────────────────────────── */
+  .heading-xl  { @apply font-display font-black text-display-xl text-cream-50 tracking-tight; }
+  .heading-lg  { @apply font-display font-bold  text-display-lg text-cream-50 tracking-tight; }
+  .heading-md  { @apply font-display font-bold  text-display-md text-cream-100 tracking-tight; }
+
+  .label-tag {
+    @apply inline-flex items-center gap-1.5 font-mono text-xs font-medium tracking-[0.18em] uppercase
+           px-3 py-1 rounded-full;
+    color: #f4a262;
+    background: rgba(224,123,57,0.10);
+    border: 1px solid rgba(224,123,57,0.22);
+  }
+
+  /* ── Buttons ─────────────────────────────── */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2
+           active:scale-[0.97]
+           text-espresso-900 font-body font-semibold text-sm
+           px-6 py-3.5 rounded-2xl
+           transition-all duration-200 ease-spring
+           select-none cursor-pointer overflow-hidden;
+    background-color: #e07b39;
+  }
+  .btn-primary:hover { background-color: #f4a262; }
+  .btn-primary::after {
+    content: '';
+    @apply absolute inset-0 bg-white/10 opacity-0 hover:opacity-100 transition-opacity rounded-2xl;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2
+           border border-white/15 hover:border-caramel-400/60
+           text-cream-200 hover:text-caramel-300
+           font-body font-medium text-sm
+           px-6 py-3.5 rounded-2xl
+           backdrop-blur-sm bg-white/5 hover:bg-caramel-500/10
+           transition-all duration-200
+           select-none cursor-pointer;
+  }
+
+  /* ── Cards ──────────────────────────────── */
+  .glass-card {
+    @apply relative bg-white/[0.04] backdrop-blur-md
+           border border-white/[0.08]
+           rounded-3xl shadow-glass overflow-hidden;
+  }
+  .glass-card::before {
+    content: '';
+    @apply absolute inset-0 bg-radial-warm pointer-events-none;
+  }
+
+  .dark-card {
+    @apply bg-espresso-800 border border-white/[0.06] rounded-3xl shadow-lift overflow-hidden;
+  }
+
+  /* ── Form elements ───────────────────────── */
+  .field-input {
+    @apply w-full bg-espresso-700/60 border border-white/10 rounded-2xl
+           px-4 py-3.5 text-sm text-cream-100
+           placeholder:text-cream-200/25
+           focus:outline-none focus:bg-espresso-700/80
+           transition-all duration-200;
+    --tw-ring-color: rgba(224,123,57,0.20);
+  }
+  .field-input:focus {
+    border-color: rgba(224,123,57,0.55);
+    box-shadow: 0 0 0 3px rgba(224,123,57,0.15);
+  }
+
+  .field-label {
+    @apply block text-xs font-medium tracking-wide text-cream-200/60 mb-1.5 uppercase;
+  }
+
+  .field-error {
+    @apply flex items-center gap-1 text-red-400 text-xs mt-1.5 font-medium;
+  }
+
+  /* ── Section layout ─────────────────────── */
+  .section-pad   { @apply py-20 sm:py-28; }
+  .container-lg  { @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .container-md  { @apply max-w-4xl  mx-auto px-4 sm:px-6; }
+  .container-sm  { @apply max-w-2xl  mx-auto px-4 sm:px-6; }
+
+  /* ── Divider ────────────────────────────── */
+  .divider { @apply border-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-0; }
+
+  /* ── Shimmer skeleton ───────────────────── */
+  .shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%);
+    background-size: 200% 100%;
+    @apply animate-shimmer;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar        { width: 5px; }
+::-webkit-scrollbar-track  { background: #1a1008; }
+::-webkit-scrollbar-thumb  { background: #4f311b; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #f4a030; }
+
+/* Smooth scroll offset for fixed nav */
+:target { scroll-margin-top: 72px; }
