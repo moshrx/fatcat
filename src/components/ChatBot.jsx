@@ -134,18 +134,18 @@ export default function ChatBot() {
           open ? 'scale-100 opacity-100 pointer-events-auto' : 'scale-90 opacity-0 pointer-events-none'
         }`}
       >
-        <div className="dark-card flex flex-col overflow-hidden shadow-lift" style={{ height: '520px', maxHeight: 'calc(100svh - 7rem)' }}>
+        <div className="flex flex-col overflow-hidden shadow-image rounded-2xl border border-linen-300 bg-linen-50" style={{ height: '520px', maxHeight: 'calc(100svh - 7rem)' }}>
 
           {/* Header */}
-          <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/[0.07]" style={{ background: '#e07b39' }}>
-            <img src="/logo.png" alt="Fat Cat Bakery" className="w-9 h-9 rounded-lg object-contain bg-espresso-900/30" />
+          <div className="flex items-center gap-3 px-4 py-3.5 border-b border-linen-300" style={{ background: '#e07b39' }}>
+            <img src="/logo.png" alt="Fat Cat Bakery" className="w-9 h-9 rounded-lg object-contain bg-linen-200/50" />
             <div className="flex-1 min-w-0">
               <p className="font-display font-bold text-espresso-900 text-sm leading-tight">Fat Cat Bakery</p>
               <p className="font-mono text-[10px] text-espresso-900/60 tracking-wide">Bakery assistant</p>
             </div>
             <button
               onClick={() => setOpen(false)}
-              className="w-7 h-7 rounded-lg bg-espresso-900/15 hover:bg-espresso-900/30 flex items-center justify-center text-espresso-900/80 transition-colors"
+              className="w-7 h-7 rounded-lg bg-black/10 hover:bg-linen-200/50 flex items-center justify-center text-ink-400/80 transition-colors"
               aria-label="Close"
             >
               <CloseIcon />
@@ -153,14 +153,14 @@ export default function ChatBot() {
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
+          <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-white">
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div
                   className={`max-w-[85%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed font-body ${
                     msg.role === 'user'
-                      ? 'text-espresso-900 font-medium rounded-br-sm'
-                      : 'bg-espresso-700 text-cream-100 border border-white/[0.07] rounded-bl-sm'
+                      ? 'text-white font-medium rounded-br-sm'
+                      : 'bg-linen-200 text-ink-400 border border-linen-300 rounded-bl-sm'
                   }`}
                   style={msg.role === 'user' ? { background: '#e07b39' } : {}}
                 >
@@ -172,11 +172,11 @@ export default function ChatBot() {
             {/* Typing indicator */}
             {loading && (
               <div className="flex justify-start">
-                <div className="bg-espresso-700 border border-white/[0.07] px-4 py-3 rounded-2xl rounded-bl-sm flex gap-1.5 items-center">
+                <div className="bg-linen-200 border border-linen-300 px-4 py-3 rounded-2xl rounded-bl-sm flex gap-1.5 items-center">
                   {[0, 1, 2].map(i => (
                     <div
                       key={i}
-                      className="w-1.5 h-1.5 rounded-full bg-cream-200/50 animate-bounce"
+                      className="w-1.5 h-1.5 rounded-full bg-ink-200/40 animate-bounce"
                       style={{ animationDelay: `${i * 150}ms` }}
                     />
                   ))}
@@ -191,7 +191,7 @@ export default function ChatBot() {
                   <button
                     key={s}
                     onClick={() => send(s)}
-                    className="text-xs font-body font-medium px-3 py-1.5 rounded-full bg-espresso-700 border border-brand-orange/25 text-brand-orange-light hover:bg-brand-orange/10 hover:border-brand-orange/50 transition-all duration-150"
+                    className="text-xs font-body font-medium px-3 py-1.5 rounded-full bg-linen-200 border border-orange/25 text-orange hover:bg-orange-pale hover:border-orange/50 transition-all duration-150"
                   >
                     {s}
                   </button>
@@ -213,7 +213,7 @@ export default function ChatBot() {
                 placeholder="Ask about cakes, hours, orders..."
                 rows={1}
                 disabled={loading}
-                className="flex-1 bg-espresso-700/80 border border-white/10 rounded-2xl px-3.5 py-2.5 text-sm text-cream-100 placeholder:text-cream-200/25 focus:outline-none resize-none leading-relaxed disabled:opacity-50 transition-colors"
+                className="flex-1 bg-linen-100 border border-linen-300 rounded-2xl px-3.5 py-2.5 text-sm text-ink-400 placeholder:text-ink-100/50 focus:outline-none focus:border-orange/40 resize-none leading-relaxed disabled:opacity-50 transition-colors"
                 style={{ maxHeight: '96px', overflowY: 'auto' }}
                 onInput={e => {
                   e.target.style.height = 'auto'
@@ -230,7 +230,7 @@ export default function ChatBot() {
                 <SendIcon />
               </button>
             </div>
-            <p className="font-mono text-[10px] text-cream-200/20 text-center mt-2">Powered by Groq AI</p>
+            <p className="font-mono text-[10px] text-ink-100/50 text-center mt-2">Powered by Groq AI</p>
           </div>
         </div>
       </div>
